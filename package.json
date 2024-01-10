@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node index.js Manav%40123",
     "dev": "nodemon index.js Manav%40123",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "deploy:full": "cd ../part3 && git add . && git commit -m 'changes in ui' && git push"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +19,7 @@
     "mongoose": "^8.0.4"
   },
   "devDependencies": {
+    "eslint": "^8.56.0",
     "nodemon": "^3.0.2"
   }
 }
