@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js Manav%40123",
-    "dev": "nodemon index.js Manav%40123",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=production node index.js Manav%40123",
+    "dev": "cross-env NODE_ENV=development nodemon index.js Manav%40123",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "test:api": "npm test -- tests/note_api.test.js",
+    "test:specific": "npm test -- -t 'a specific note is within the returned notes'",
     "lint": "eslint .",
     "deploy:full": "cd ../part3 && git add . && git commit -m 'changes in ui' && git push"
   },
@@ -14,12 +16,20 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
     "mongoose": "^8.0.4"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
-    "nodemon": "^3.0.2"
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "globalTeardown": "./tests/teardown.js"
   }
 }
