@@ -2,6 +2,10 @@ GET http://localhost:3001/api/notes/ HTTP/1.1
 
 ###
 
+GET http://localhost:3001/api/users/ HTTP/1.1
+
+###
+
 POST http://localhost:3001/api/notes HTTP/1.1
 Content-Type: application/json
 
@@ -12,10 +16,47 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3001/api/notes/659e378b5927f3ec8a4bc74c HTTP/1.1
+PUT http://localhost:3001/api/notes/659e86eebbcfb905ab294d85 HTTP/1.1
 Content-Type: application/json
 
 {
-    "content": "HTML is easy",
+    "content": "note number 6th",
+    "important": true,
+    "userId": "659eb5fcd00a63444d1247c0"
+}
+
+###
+
+POST http://localhost:3001/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "root",
+    "name": "Superuser",
+    "password": "salainen"
+}
+
+###
+
+GET http://localhost:3001/api/users HTTP/1.1
+
+###
+
+POST http://localhost:3001/api/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "root",
+    "password": "salainen"
+}
+
+###
+
+POST http://localhost:3001/api/notes HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY1OWViNWZjZDAwYTYzNDQ0ZDEyNDdjMCIsImlhdCI6MTcwNDk0Mjg0MSwiZXhwIjoxNzA0OTQ2NDQxfQ.5Y1Q13NFAP4Wy9Jkp9KuXx2_zg1tOoCfTmwzgi1sovQ
+
+{
+    "content": "Added by a user",
     "important": true
 }
